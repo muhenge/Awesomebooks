@@ -13,28 +13,27 @@ const addBook = ()=>{
             author: author.value
         };
         books.push(book);
-        
+        const titleLi = document.createElement('li');
+        const authorLi = document.createElement('li');
+        const removeBtn = document.createElement("button");
         books.forEach(b => {
-            const removeBtn = document.createElement("button");
             removeBtn.innerText = "Remove";
-            const titleLi = document.createElement('li');
-            const authorLi = document.createElement('li')
             titleLi.innerText = b.name
             authorLi.innerText = b.author
-            ul.appendChild(titleLi);
-            ul.appendChild(authorLi);
-            ul.appendChild(removeBtn);
+            if(titleLi.innerText === '' && authorLi.innerText === '') {
+                console.log('empty');
+            }
+            else {
+                ul.appendChild(titleLi);
+                ul.appendChild(authorLi);
+                ul.appendChild(removeBtn);
+            }
 
         });
 
-    // const display = ()=>{
-        
-    // }
-
-    // return {makeBook,display}
 }
 
-// const test = addBook();
+
 
 const removeBook = () => {
 
