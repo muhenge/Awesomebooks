@@ -15,12 +15,16 @@ const addBook = ()=>{
         books.push(book);
         
         books.forEach(b => {
+            const removeBtn = document.createElement("button");
+            removeBtn.innerText = "Remove";
             const titleLi = document.createElement('li');
             const authorLi = document.createElement('li')
             titleLi.innerText = b.name
             authorLi.innerText = b.author
             ul.appendChild(titleLi);
             ul.appendChild(authorLi);
+            ul.appendChild(removeBtn);
+
         });
 
     // const display = ()=>{
