@@ -30,6 +30,8 @@ const addBook = () => {
 
         const bookTest = JSON.stringify(book)
         localStorage.setItem(title.value, bookTest);
+        const data = localStorage.getItem(title.value);
+        const parsed = JSON.parse(data);
         
         const titleLi = document.createElement('div');
         titleLi.classList.add('text-uppercase','fs-1');
@@ -39,13 +41,14 @@ const addBook = () => {
         const container = document.createElement("div");
         const li = document.createElement('li');
         li.classList.add('list-group-item');
-        books.forEach(b => {
+        books.forEach( b => {
+        
             removeBtn.innerText = "Remove";
-            removeBtn.classList.add('btn','btn-danger')
-            titleLi.innerText = b.name
-            authorLi.innerText = b.author
+            removeBtn.classList.add('btn','btn-danger');
+            titleLi.innerText = parsed.name
+            authorLi.innerText = parsed.author
             if(titleLi.innerText === '' && authorLi.innerText === '') {
-                console.log('empty');
+                
             }
             else {
                 container.appendChild(titleLi);
