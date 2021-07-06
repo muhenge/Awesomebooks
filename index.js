@@ -4,17 +4,22 @@ const title = document.getElementById('title');
 const author = document.getElementById('author');
 const ul = document.getElementById('ul');
 
+
+
 const removeBook = (event) => {
     event.preventDefault();
     //const b = document.getElementsByClassName('book');
-    var divBook = event.currentTarget.parentElement;
-    var liBook = divBook.parentElement;
+    const divBook = event.currentTarget.parentElement;
+    const liBook = divBook.parentElement;
     
     ul.removeChild(liBook);
     books = books.filter(b => {
         b.name != divBook.children[0].innerText &&
         b.author != divBook.children[1].innerText;
     });
+
+    localStorage.removeItem(divBook.children[0].innerText);
+
 }
 const addBook = () => {
         const book = {
@@ -22,12 +27,10 @@ const addBook = () => {
             author: author.value
         };
         books.push(book);
-        books.forEach( book => {
-            const bookTest = JSON.stringify(book)
-            localStorage.setItem('bookStore', bookTest);
-        })
+
+        const bookTest = JSON.stringify(book)
+        localStorage.setItem(title.value, bookTest);
         
-    
         const titleLi = document.createElement('div');
         titleLi.classList.add('text-uppercase','fs-1');
         const authorLi = document.createElement('div');
