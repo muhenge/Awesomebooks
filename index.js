@@ -1,5 +1,4 @@
 let books = [];
-
 const form = document.getElementsByTagName('form');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
@@ -16,31 +15,24 @@ const removeBook = (event) => {
         b.name != divBook.children[0].innerText &&
         b.author != divBook.children[1].innerText;
     });
-    console.log(books);
-
-    // const rmv = document.getElementsByClassName('btnn');
-    // books.filter(e => {
-    //     if(event) {
-    //         console.log(e)
-    //     }
-    // })
 }
-
-const addBook = ()=>{
-    // const makeBook = ()=>{
+const addBook = () => {
         const book = {
             name: title.value,
             author: author.value
         };
         books.push(book);
-
-        const titleLi = document.createElement('span');
-        const authorLi = document.createElement('span');
+        const titleLi = document.createElement('div');
+        titleLi.classList.add('text-uppercase','fs-1');
+        const authorLi = document.createElement('div');
+        authorLi.classList.add('text-capitalize');
         const removeBtn = document.createElement("button");
         const container = document.createElement("div");
         const li = document.createElement('li');
+        li.classList.add('list-group-item');
         books.forEach(b => {
             removeBtn.innerText = "Remove";
+            removeBtn.classList.add('btn','btn-danger')
             titleLi.innerText = b.name
             authorLi.innerText = b.author
             if(titleLi.innerText === '' && authorLi.innerText === '') {
@@ -53,12 +45,9 @@ const addBook = ()=>{
                 ul.appendChild(li);
                 container.appendChild(removeBtn);
             }
-
             removeBtn.addEventListener('click',removeBook)
         });
 }
-
-
 
 document.getElementById('btn').addEventListener('click', (event)=>{
     event.preventDefault();
