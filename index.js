@@ -1,5 +1,5 @@
 let books = [];
-const form = document.getElementsByTagName('form');
+const form = document.getElementById('form');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
 const ul = document.getElementById('ul');
@@ -52,6 +52,7 @@ const addBook = () => {
 document.getElementById('btn').addEventListener('click', (event)=>{
     event.preventDefault();
     addBook();
+    form.reset();
 });
 
 
