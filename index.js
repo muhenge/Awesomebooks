@@ -7,8 +7,17 @@ const ul = document.getElementById('ul');
 
 const removeBook = (event) => {
     event.preventDefault();
-    const b = document.getElementsByClassName('book');
-    console.log(b);
+    //const b = document.getElementsByClassName('book');
+    var divBook = event.currentTarget.parentElement;
+    var liBook = divBook.parentElement;
+    
+    ul.removeChild(liBook);
+    books = books.filter(b => {
+        b.name != divBook.children[0].innerText &&
+        b.author != divBook.children[1].innerText;
+    });
+    console.log(books);
+
     // const rmv = document.getElementsByClassName('btnn');
     // books.filter(e => {
     //     if(event) {
@@ -28,8 +37,6 @@ const addBook = ()=>{
         const titleLi = document.createElement('span');
         const authorLi = document.createElement('span');
         const removeBtn = document.createElement("button");
-        removeBtn.setAttribute('class','btnn');
-        console.log(removeBook)
         const container = document.createElement("div");
         const li = document.createElement('li');
         books.forEach(b => {
