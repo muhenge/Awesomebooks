@@ -22,6 +22,12 @@ const addBook = () => {
             author: author.value
         };
         books.push(book);
+        books.forEach( book => {
+            const bookTest = JSON.stringify(book)
+            localStorage.setItem('bookStore', bookTest);
+        })
+        
+    
         const titleLi = document.createElement('div');
         titleLi.classList.add('text-uppercase','fs-1');
         const authorLi = document.createElement('div');
