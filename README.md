@@ -16,7 +16,7 @@
 
 ## Live demo
 
-[Live preview](https://abredi.github.io/todoApp/dist/index.html)
+[Live preview](https://awesomebook.netlify.app/)
 
 ### Author
 
@@ -26,7 +26,7 @@
 - Github: [@muhenge](https://github.com/muhenge)
 - LinkedIn: [Visit](https://www.linkedin.com/in/mugunga-herve-a62a0ab9/)
 
-👤 **Abdulaziz Ali**
+👤 **Maximiliano**
 
 - Github: [@webdevmaxi](https://github.com/webdevmaxi)
 - LinkedIn: [Visit](https://www.linkedin.com/in/mistermaxis/)
