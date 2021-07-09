@@ -2,6 +2,8 @@
 
   <h1 align="center">Awesome Books</h1>
 
+![screenshot](./app_screenshot.png)
+
 ### Built with
 
 - HTML
