@@ -1,67 +1,66 @@
-let books = [];
-const form = document.getElementById('form');
-const title = document.getElementById('title');
-const author = document.getElementById('author');
-const ul = document.getElementById('ul');
+let arrayOfBooks = [];
 
-const removeBook = (event) => {
-  event.preventDefault();
-  const divBook = event.currentTarget.parentElement;
-  const liBook = divBook.parentElement;
+const addButton = document.getElementById('add');
+const bookList = document.getElementById('book-list');
+const titleInput = document.getElementById('title-name');
+const authorInput = document.getElementById('author-name');
 
-  ul.removeChild(liBook);
-  // eslint-disable-next-line array-callback-return
-  books = books.filter((b) => {
-    // eslint-disable-next-line no-unused-expressions
-    b.name !== divBook.children[0].innerText && b.author !== divBook.children[1].innerText;
-  });
-
-  localStorage.removeItem(divBook.children[0].innerText);
-};
-const addBook = () => {
-  const book = {
-    name: title.value,
-    author: author.value,
+function addBook() {
+  const newBook = {
+    title: titleInput.value,
+    author: authorInput.value,
   };
-  books.push(book);
 
-  const bookTest = JSON.stringify(book);
-  localStorage.setItem(title.value, bookTest);
-  const data = localStorage.getItem(title.value);
-  const parsed = JSON.parse(data);
+  if (newBook.title !== '' && newBook.author !== '') {
+    arrayOfBooks.push(newBook);
+  }
+}
 
-  const titleLi = document.createElement('div');
-  titleLi.classList.add('text-uppercase', 'fs-1');
-  const authorLi = document.createElement('div');
-  authorLi.classList.add('text-capitalize');
-  const removeBtn = document.createElement('button');
-  const container = document.createElement('div');
-  const li = document.createElement('li');
-  li.classList.add('list-group-item');
-  books.forEach(() => {
-    removeBtn.innerText = 'Remove';
-    removeBtn.classList.add('btn', 'btn-danger');
-    titleLi.innerText = parsed.name;
-    authorLi.innerText = parsed.author;
-    if (titleLi.innerText === '' && authorLi.innerText === '') {
-      const alert = document.createElement('div');
-      alert.classList.add('alert', 'alert-danger');
-      alert.setAttribute('role', 'alert');
-      alert.innerText = 'Please, add a title and author';
-      document.getElementById('alert').appendChild(alert);
-    } else {
-      container.appendChild(titleLi);
-      container.appendChild(authorLi);
-      li.appendChild(container);
-      ul.appendChild(li);
-      container.appendChild(removeBtn);
+function removeBook(event) {
+  const bookKey = event.currentTarget.parentElement;
+  const bookContainer = bookKey.parentElement;
+
+  const filteredArray = arrayOfBooks.filter(book => book.title !== bookKey.children[0].innerText
+    || book.author !== bookKey.children[1].innerText);
+
+  arrayOfBooks = filteredArray;
+
+  bookContainer.removeChild(bookKey);
+}
+
+function loadBooks() {
+  const strBooks = window.localStorage.getItem('books');
+
+  if (strBooks !== null) {
+    arrayOfBooks = JSON.parse(strBooks);
+/* eslint-disable */
+
+    for (const book of arrayOfBooks) {
+      const bookCont = document.createElement('div');
+      const bookName = document.createElement('p');
+      const authorName = document.createElement('p');
+
+      bookName.innerText = book.title;
+      authorName.innerText = book.author;
+
+      const rmvBookBtn = document.createElement('button');
+      rmvBookBtn.innerText = 'Remove Book';
+      rmvBookBtn.addEventListener('click', removeBook);
+
+      bookCont.appendChild(bookName);
+      bookCont.appendChild(authorName);
+      bookCont.appendChild(rmvBookBtn);
+      bookList.appendChild(bookCont);
     }
-    removeBtn.addEventListener('click', removeBook);
-  });
-};
+  }
+  /* eslint-enable */
+}
 
-document.getElementById('btn').addEventListener('click', (event) => {
-  event.preventDefault();
-  addBook();
-  form.reset();
-});
+function saveBooks() {
+  const svBooks = JSON.stringify(arrayOfBooks);
+  window.localStorage.setItem('books', svBooks);
+}
+
+window.addEventListener('load', loadBooks);
+window.addEventListener('unload', saveBooks);
+addButton.addEventListener('click', addBook);
