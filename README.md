@@ -11,9 +11,9 @@
 
 ## Setup and run the app
 
-- Run `git clone https://github.com/muhenge/Awesomebooks.git` in your termianl
-- Run `npm install` from the terminal to install the dependences
-
+- run `git clone https://github.com/muhenge/Awesomebooks.git` in your terminal
+- cd into the folder
+- open index.html with live server
 ## Live demo
 
 [Live preview](https://awesomebook.netlify.app/)
