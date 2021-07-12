@@ -69,8 +69,9 @@ function saveBooks() {
 // addButton.addEventListener('click', addBook);
 
 class BookCatalog {
-  constructor() {}
-  booksCatalog = [];
+  constructor() {
+    this.booksCatalog = [];
+  }
   addBookButton;
   listOfBooks;
   inputTitle;
@@ -79,18 +80,18 @@ class BookCatalog {
   initialize() {
     this.loadBooks();
     this.addBookButton = document.getElementById("add");
-   
-    this.inputTitle = document.getElementById("title-name");
-    this.inputAuthor = document.getElementById("author-name");
-    this.listOfBooks = document.getElementById("book-list");
+    window.addEventListener('load', this.loadBooks);
+    //this.listOfBooks = document.getElementById("book-list");
     this.inputTitle = document.getElementById("title-name");
     this.inputAuthor = document.getElementById("author-name");
     document.getElementById('add').addEventListener('click', this.addBook);
-    window.addEventListener('load', this.loadBooks);
     window.addEventListener('unload', this.saveBooks);
   }
 
   addBook() {
+    this.inputTitle = document.getElementById("title-name");
+    this.inputAuthor = document.getElementById("author-name");
+    console.log(this.inputTitle);
     const newBook = {
       title: this.inputTitle.value,
       author: this.inputAuthor.value,
@@ -149,8 +150,6 @@ class BookCatalog {
     const svBooks = JSON.stringify(this.booksCatalog);
     window.localStorage.setItem('books', svBooks);
   }
-
-
 };
 
 const b = new BookCatalog();
