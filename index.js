@@ -64,3 +64,22 @@ function saveBooks() {
 window.addEventListener('load', loadBooks);
 window.addEventListener('unload', saveBooks);
 addButton.addEventListener('click', addBook);
+
+
+
+class BookCatalog {
+  constructor (){}
+  booksCatalog = [];
+  addBookButton;
+  listOfBooks;
+  inputTitle;
+  inputAuthor;
+
+  addBook(){}
+  removeBook(){}
+  loadBooks(){}
+  saveBooks(){}
+
+  initialize(){}
+}
+
