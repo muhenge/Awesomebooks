@@ -76,34 +76,32 @@ class BookCatalog {
   inputTitle;
   inputAuthor;
 
+  initialize() {
+    this.loadBooks();
+    this.addBookButton = document.getElementById("add");
+   
+    this.inputTitle = document.getElementById("title-name");
+    this.inputAuthor = document.getElementById("author-name");
+    this.listOfBooks = document.getElementById("book-list");
+    this.inputTitle = document.getElementById("title-name");
+    this.inputAuthor = document.getElementById("author-name");
+    document.getElementById('add').addEventListener('click', this.addBook);
+    window.addEventListener('load', this.loadBooks);
+    window.addEventListener('unload', this.saveBooks);
+  }
+
   addBook() {
     const newBook = {
       title: this.inputTitle.value,
       author: this.inputAuthor.value,
     };
-    console.log(newBook);
-    console.log(this.booksCatalog);
     if (newBook.title !== "" && newBook.author !== "") {
       this.booksCatalog.push(newBook);
     }
   }
 
-  removeBook(event) {
-    const bookKey = event.currentTarget.parentElement;
-    const bookContainer = bookKey.parentElement;
-
-    const filteredArray = this.booksCatalog.filter(
-    (book) =>
-      book.title !== bookKey.children[0].innerText ||
-      book.author !== bookKey.children[1].innerText
-    );
-
-    arrayOfBooks = filteredArray;
-
-    bookContainer.removeChild(bookKey);
-  }
-
   loadBooks() {
+    this.listOfBooks = document.getElementById("book-list");
     const strBooks = window.localStorage.getItem("books");
 
     if (strBooks !== null) {
@@ -120,34 +118,39 @@ class BookCatalog {
   
         const rmvBookBtn = document.createElement("button");
         rmvBookBtn.innerText = "Remove Book";
-        rmvBookBtn.addEventListener("click", removeBook);
+        rmvBookBtn.addEventListener("click", this.removeBook);
   
         bookCont.appendChild(bookName);
         bookCont.appendChild(authorName);
         bookCont.appendChild(rmvBookBtn);
-        bookList.appendChild(bookCont);
+        this.listOfBooks.appendChild(bookCont);
       }
     }
+    
     /* eslint-enable */
   }
+
+  removeBook(event) {
+    const bookKey = event.currentTarget.parentElement;
+    const bookContainer = bookKey.parentElement;
+    const filteredArray = this.booksCatalog.filter(
+    (book) =>
+      book.title !== bookKey.children[0].innerText ||
+      book.author !== bookKey.children[1].innerText
+    );
+
+    arrayOfBooks = filteredArray;
+
+    bookContainer.removeChild(bookKey);
+  }
+
+ 
   saveBooks() {
     const svBooks = JSON.stringify(this.booksCatalog);
     window.localStorage.setItem('books', svBooks);
   }
 
-  initialize() {
-    //this.loadBooks();
-    this.addBookButton = document.getElementById("add");
-    this.listOfBooks = document.getElementById("book-list");
-    this.inputTitle = document.getElementById("title-name");
-    this.inputAuthor = document.getElementById("author-name");
-    this.listOfBooks = document.getElementById("book-list");
-    this.inputTitle = document.getElementById("title-name");
-    this.inputAuthor = document.getElementById("author-name");
-    document.getElementById('add').addEventListener('click', this.addBook);
-    window.addEventListener('load', this.loadBooks);
-    window.addEventListener('unload', this.saveBooks);
-  }
+
 };
 
 const b = new BookCatalog();
