@@ -34,12 +34,12 @@ class BookCatalog {
       for (const book of documentVariables.booksCatalog) {
         const bookCont = document.createElement('div');
         const titleAuth = document.createElement('div');
-        const titleAuthClasses = 'd-flex justify-content-around'.split(' ');
+        const titleAuthClasses = 'd-flex flex-column justify-content-around'.split(' ');
         titleAuth.classList.add(...titleAuthClasses);
         const bookName = document.createElement('span');
-        bookName.classList.add('d-inline');
+        bookName.classList.add('d-block','text-uppercase','fs-2');
         const authorName = document.createElement('span');
-        authorName.classList.add('d-inline');
+        authorName.classList.add('d-block');
         titleAuth.appendChild(bookName);
         titleAuth.appendChild(authorName);        
         const bookContClasses = 'col-12 d-flex justify-content-between border p-3'.split(' ');
