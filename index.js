@@ -33,14 +33,17 @@ class BookCatalog {
   
       for (const book of documentVariables.booksCatalog) {
         const bookCont = document.createElement('div');
+
         const bookName = document.createElement('p');
         const authorName = document.createElement('p');
-  
+        const bookContClasses = 'col-12 d-flex justify-content-between border pt-3 pb-3'.split(' ');
+        bookCont.classList.add(...bookContClasses);
         bookName.innerText = book.title;
         authorName.innerText = book.author;
-  
+        
         const rmvBookBtn = document.createElement('button');
         rmvBookBtn.innerText = 'Remove Book';
+        rmvBookBtn.classList.add('btn','btn-danger')
         rmvBookBtn.addEventListener('click', BookCatalog.removeBook)
   
         bookCont.appendChild(bookName);
