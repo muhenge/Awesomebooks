@@ -4,7 +4,7 @@ const documentVariables = {
   inputTitle: document.getElementById('title-name'),
   inputAuthor: document.getElementById('author-name'),
   addBookButton: document.getElementById('add'),
-}
+};
 
 class BookCatalog {
   constructor() {
@@ -13,16 +13,18 @@ class BookCatalog {
     window.addEventListener('unload', this.saveBooks);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   addBook() {
     if (documentVariables.inputTitle.value !== '' && documentVariables.inputAuthor.value !== '') {
       const newBook = {
-      title: documentVariables.inputTitle.value,
-      author: documentVariables.inputAuthor.value,
+        title: documentVariables.inputTitle.value,
+        author: documentVariables.inputAuthor.value,
       };
       documentVariables.booksCatalog.push(newBook);
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   loadBooks() {
     const strBooks = window.localStorage.getItem('books');
     if (strBooks !== null) {
@@ -51,13 +53,12 @@ class BookCatalog {
     /* eslint-enable */
   }
 
-static  removeBook(event) {
+  static removeBook(event) {
     const bookKey = event.currentTarget.parentElement;
     const bookContainer = bookKey.parentElement;
     const filteredArray = documentVariables.booksCatalog.filter(
-    (book) =>
-      book.title !== bookKey.children[0].innerText ||
-      book.author !== bookKey.children[1].innerText
+      (book) => book.title !== bookKey.children[0].innerText
+      || book.author !== bookKey.children[1].innerText,
     );
 
     documentVariables.booksCatalog = filteredArray;
@@ -65,13 +66,14 @@ static  removeBook(event) {
     bookContainer.removeChild(bookKey);
   }
 
- 
+  // eslint-disable-next-line class-methods-use-this
   saveBooks() {
     if (documentVariables.booksCatalog !== undefined) {
       const svBooks = JSON.stringify(documentVariables.booksCatalog);
       window.localStorage.setItem('books', svBooks);
-    } 
+    }
   }
-};
+}
 
+// eslint-disable-next-line no-unused-vars
 const b = new BookCatalog();

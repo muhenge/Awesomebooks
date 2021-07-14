@@ -1,7 +1,4 @@
-html {
-  background-color: darkgreen;
-  color: darkgrey;
-}
-p {
-  margin: 0.5rem;
+body {
+  padding: 0;
+  margin: 0;
 }
