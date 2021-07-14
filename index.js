@@ -33,18 +33,26 @@ class BookCatalog {
   
       for (const book of documentVariables.booksCatalog) {
         const bookCont = document.createElement('div');
-        const bookName = document.createElement('p');
-        const authorName = document.createElement('p');
-  
+        const titleAuth = document.createElement('div');
+        const titleAuthClasses = 'd-flex flex-column justify-content-around'.split(' ');
+        titleAuth.classList.add(...titleAuthClasses);
+        const bookName = document.createElement('span');
+        bookName.classList.add('d-block','text-uppercase','fs-2');
+        const authorName = document.createElement('span');
+        authorName.classList.add('d-block');
+        titleAuth.appendChild(bookName);
+        titleAuth.appendChild(authorName);        
+        const bookContClasses = 'col-12 d-flex justify-content-between border p-3'.split(' ');
+        bookCont.classList.add(...bookContClasses);
         bookName.innerText = book.title;
         authorName.innerText = book.author;
-  
+        
         const rmvBookBtn = document.createElement('button');
         rmvBookBtn.innerText = 'Remove Book';
+        rmvBookBtn.classList.add('btn','btn-danger')
         rmvBookBtn.addEventListener('click', BookCatalog.removeBook)
   
-        bookCont.appendChild(bookName);
-        bookCont.appendChild(authorName);
+        bookCont.appendChild(titleAuth);
         bookCont.appendChild(rmvBookBtn);
         documentVariables.listOfBooks.appendChild(bookCont);
       }
