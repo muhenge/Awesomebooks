@@ -19,11 +19,8 @@ class BookCatalog {
       title: documentVariables.inputTitle.value,
       author: documentVariables.inputAuthor.value,
       };
-
-    console.log(documentVariables.booksCatalog);
       documentVariables.booksCatalog.push(newBook);
     }
-    console.log(documentVariables.booksCatalog);
   }
 
   loadBooks() {
@@ -66,7 +63,6 @@ static  removeBook(event) {
     documentVariables.booksCatalog = filteredArray;
 
     bookContainer.removeChild(bookKey);
-    console.log('removeBook');
   }
 
  
