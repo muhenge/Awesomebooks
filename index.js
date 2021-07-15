@@ -14,7 +14,8 @@ class BookCatalog {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  addBook() {
+  addBook(e) {
+    e.preventDefault();
     if (documentVariables.inputTitle.value !== '' && documentVariables.inputAuthor.value !== '') {
       const newBook = {
         title: documentVariables.inputTitle.value,
@@ -22,6 +23,7 @@ class BookCatalog {
       };
       documentVariables.booksCatalog.push(newBook);
     }
+    e.reset();
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -85,3 +87,20 @@ class BookCatalog {
 
 // eslint-disable-next-line no-unused-vars
 const b = new BookCatalog();
+
+document.getElementById('add-book').classList.add('d-none');
+document.getElementById('book-list').classList.add('d-block');
+
+
+document.getElementById('add-nav').addEventListener('click',()=>{
+  document.getElementById('book-list').classList.add('d-none');
+  document.getElementById('add-book').classList.add('d-block');
+  document.getElementById('add-book').classList.remove('d-none');
+});
+
+document.getElementById('list').addEventListener('click',()=>{
+  document.getElementById('add-book').classList.add('d-none');
+  document.getElementById('book-list').classList.add('d-block');
+  document.getElementById('book-list').classList.remove('d-none');
+});
+

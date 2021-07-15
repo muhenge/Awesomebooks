@@ -26,11 +26,11 @@
         <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
             <ul class="navbar-nav ms-auto flex-nowrap">
                
-                <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item text-white">List</a>
+                <li class="nav-item" >
+                    <a href="#" id="list"  class="nav-link m-2 menu-item text-white">List</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item text-white">Add a book</a>
+                    <a href="#" id="add-nav"  class="nav-link m-2 menu-item text-white">Add a book</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link m-2 menu-item text-white">Contact</a>
@@ -41,7 +41,7 @@
     <div class="container">
         <div class="d-flex justify-content-center mb-3 mt-3"><h1>All Awesome Books</h1></div>
     <div id="book-list"></div>
-    <div class="d-flex justify-content-center mt-1">
+    <div class="d-flex justify-content-center mt-1" id="add-book">
         <form class="d-block">
             <input id="title-name" class="form-control" type="text" placeholder="Enter the title" required /><br>
             <input id="author-name" class="form-control" type="text" placeholder="Enter the author" required /><br>
