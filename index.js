@@ -1,4 +1,6 @@
+/* eslint-disable */
 const { DateTime } = luxon;
+/* eslint-enable */
 
 const documentVariables = {
   booksCatalog: [],
@@ -27,13 +29,11 @@ class BookCatalog {
     document.getElementById('input-form').reset();
 
     BookCatalog.saveBooks();
-    //console.log(documentVariables.booksCatalog);
     BookCatalog.loadBooks();
-    //console.log(documentVariables.booksCatalog);
   }
 
   // eslint-disable-next-line class-methods-use-this
-static  loadBooks() {
+  static loadBooks() {
     const strBooks = window.localStorage.getItem('books');
     if (strBooks !== null) {
       documentVariables.listOfBooks.innerHTML = '';
@@ -42,23 +42,23 @@ static  loadBooks() {
 
       for (const book of documentVariables.booksCatalog) {
         const bookCont = document.createElement('div');
-        
+
         const titleAuth = document.createElement('div');
         const titleAuthClasses = 'd-flex flex-column justify-content-around'.split(' ');
         titleAuth.classList.add(...titleAuthClasses);
-        
+
         const bookName = document.createElement('span');
         bookName.classList.add('show-no-bootstrap', 'text-uppercase', 'fs-2');
-        
+
         const authorName = document.createElement('span');
         authorName.classList.add('show-no-bootstrap');
-        
+
         bookName.innerText = book.title;
         authorName.innerText = book.author;
 
         titleAuth.appendChild(bookName);
         titleAuth.appendChild(authorName);
-        
+
         const bookContClasses = 'col-12 d-flex justify-content-between border p-3'.split(' ');
         bookCont.classList.add(...bookContClasses);
 
@@ -74,9 +74,6 @@ static  loadBooks() {
 
     }
     /* eslint-enable */
-    console.log('loadBooks()')
-    console.log(window.localStorage.getItem('books'));
-    console.log(documentVariables.booksCatalog);
   }
 
   static removeBook(event) {
@@ -93,11 +90,10 @@ static  loadBooks() {
   }
 
   // eslint-disable-next-line class-methods-use-this
-static  saveBooks() {
-      const svBooks = JSON.stringify(documentVariables.booksCatalog);
-      window.localStorage.setItem('books', svBooks);
-      console.log('saveBooks()');
-    }
+  static saveBooks() {
+    const svBooks = JSON.stringify(documentVariables.booksCatalog);
+    window.localStorage.setItem('books', svBooks);
+  }
 }
 
 // eslint-disable-next-line no-unused-vars
