@@ -31,28 +31,28 @@ class BookCatalog {
     if (strBooks !== null) {
       documentVariables.booksCatalog = JSON.parse(strBooks);
       /* eslint-disable */
-  
+
       for (const book of documentVariables.booksCatalog) {
         const bookCont = document.createElement('div');
         const titleAuth = document.createElement('div');
         const titleAuthClasses = 'd-flex flex-column justify-content-around'.split(' ');
         titleAuth.classList.add(...titleAuthClasses);
         const bookName = document.createElement('span');
-        bookName.classList.add('show-no-bootstrap','text-uppercase','fs-2');
+        bookName.classList.add('show-no-bootstrap', 'text-uppercase', 'fs-2');
         const authorName = document.createElement('span');
         authorName.classList.add('show-no-bootstrap');
         titleAuth.appendChild(bookName);
-        titleAuth.appendChild(authorName);        
+        titleAuth.appendChild(authorName);
         const bookContClasses = 'col-12 d-flex justify-content-between border p-3'.split(' ');
         bookCont.classList.add(...bookContClasses);
         bookName.innerText = book.title;
         authorName.innerText = book.author;
-        
+
         const rmvBookBtn = document.createElement('button');
         rmvBookBtn.innerText = 'Remove Book';
-        rmvBookBtn.classList.add('btn','btn-danger')
+        rmvBookBtn.classList.add('btn', 'btn-danger')
         rmvBookBtn.addEventListener('click', BookCatalog.removeBook)
-  
+
         bookCont.appendChild(titleAuth);
         bookCont.appendChild(rmvBookBtn);
         documentVariables.listOfBooks.appendChild(bookCont);
@@ -67,7 +67,7 @@ class BookCatalog {
     const bookContainer = bookKey.parentElement;
     const filteredArray = documentVariables.booksCatalog.filter(
       (book) => book.title !== bookKey.children[0].innerText
-      || book.author !== bookKey.children[1].innerText,
+        || book.author !== bookKey.children[1].innerText,
     );
 
     documentVariables.booksCatalog = filteredArray;
@@ -80,18 +80,18 @@ class BookCatalog {
     if (documentVariables.booksCatalog !== undefined) {
       const svBooks = JSON.stringify(documentVariables.booksCatalog);
       window.localStorage.setItem('books', svBooks);
-    } 
+    }
   }
 }
 
 // eslint-disable-next-line no-unused-vars
 const b = new BookCatalog();
 
-  document.getElementById('input-form').classList.add('hide-no-bootstrap');
-  document.getElementById('contact').classList.add('hide-no-bootstrap');
-  document.getElementById('book-list').classList.add('show-no-bootstrap');
+document.getElementById('input-form').classList.add('hide-no-bootstrap');
+document.getElementById('contact').classList.add('hide-no-bootstrap');
+document.getElementById('book-list').classList.add('show-no-bootstrap');
 
-  document.getElementById('add-nav').addEventListener('click', () => {
+document.getElementById('add-nav').addEventListener('click', () => {
   document.getElementById('input-form').classList.add('show-no-bootstrap');
   document.getElementById('input-form').classList.remove('hide-no-bootstrap');
   document.getElementById('contact').classList.add('hide-no-bootstrap');
@@ -100,7 +100,7 @@ const b = new BookCatalog();
   document.getElementById('book-list').classList.remove('show-no-bootstrap');
 });
 
-  document.getElementById('list').addEventListener('click', () => {
+document.getElementById('list').addEventListener('click', () => {
   document.getElementById('book-list').classList.add('show-no-bootstrap');
   document.getElementById('book-list').classList.remove('hide-no-bootstrap');
   document.getElementById('contact').classList.add('hide-no-bootstrap');
@@ -109,7 +109,7 @@ const b = new BookCatalog();
   document.getElementById('input-form').classList.remove('show-no-bootstrap');
 });
 
-  document.getElementById('contact-nav').addEventListener('click', () => {
+document.getElementById('contact-nav').addEventListener('click', () => {
   document.getElementById('contact').classList.add('show-no-bootstrap');
   document.getElementById('contact').classList.remove('hide-no-bootstrap');
   document.getElementById('book-list').classList.add('hide-no-bootstrap');

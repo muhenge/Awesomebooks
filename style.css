@@ -10,7 +10,3 @@ body {
 .show-no-bootstrap {
   display: block;
 }
-
-.flex-no-bootstrap {
-  display: flex;
-}
