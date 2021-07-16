@@ -38,9 +38,9 @@ class BookCatalog {
         const titleAuthClasses = 'd-flex flex-column justify-content-around'.split(' ');
         titleAuth.classList.add(...titleAuthClasses);
         const bookName = document.createElement('span');
-        bookName.classList.add('d-block','text-uppercase','fs-2');
+        bookName.classList.add('show-no-bootstrap','text-uppercase','fs-2');
         const authorName = document.createElement('span');
-        authorName.classList.add('d-block');
+        authorName.classList.add('show-no-bootstrap');
         titleAuth.appendChild(bookName);
         titleAuth.appendChild(authorName);        
         const bookContClasses = 'col-12 d-flex justify-content-between border p-3'.split(' ');
@@ -87,33 +87,33 @@ class BookCatalog {
 // eslint-disable-next-line no-unused-vars
 const b = new BookCatalog();
 
-  document.getElementById('add-book').classList.add('d-none');
-  document.getElementById('contact').classList.add('d-none');
-  document.getElementById('book-list').classList.add('d-block');
+  document.getElementById('input-form').classList.add('hide-no-bootstrap');
+  document.getElementById('contact').classList.add('hide-no-bootstrap');
+  document.getElementById('book-list').classList.add('show-no-bootstrap');
 
   document.getElementById('add-nav').addEventListener('click', () => {
-  document.getElementById('add-book').classList.add('d-block');
-  document.getElementById('add-book').classList.remove('d-none');
-  document.getElementById('contact').classList.add('d-none');
-  document.getElementById('contact').classList.remove('d-block');
-  document.getElementById('book-list').classList.add('d-none');
-  document.getElementById('book-list').classList.remove('d-block');
+  document.getElementById('input-form').classList.add('show-no-bootstrap');
+  document.getElementById('input-form').classList.remove('hide-no-bootstrap');
+  document.getElementById('contact').classList.add('hide-no-bootstrap');
+  document.getElementById('contact').classList.remove('show-no-bootstrap');
+  document.getElementById('book-list').classList.add('hide-no-bootstrap');
+  document.getElementById('book-list').classList.remove('show-no-bootstrap');
 });
 
   document.getElementById('list').addEventListener('click', () => {
-  document.getElementById('book-list').classList.add('d-block');
-  document.getElementById('book-list').classList.remove('d-none');
-  document.getElementById('contact').classList.add('d-none');
-  document.getElementById('contact').classList.remove('d-block');
-  document.getElementById('add-book').classList.add('d-none');
-  document.getElementById('add-book').classList.remove('d-block');
+  document.getElementById('book-list').classList.add('show-no-bootstrap');
+  document.getElementById('book-list').classList.remove('hide-no-bootstrap');
+  document.getElementById('contact').classList.add('hide-no-bootstrap');
+  document.getElementById('contact').classList.remove('show-no-bootstrap');
+  document.getElementById('input-form').classList.add('hide-no-bootstrap');
+  document.getElementById('input-form').classList.remove('show-no-bootstrap');
 });
 
   document.getElementById('contact-nav').addEventListener('click', () => {
-  document.getElementById('contact').classList.add('d-block');
-  document.getElementById('contact').classList.remove('d-none');
-  document.getElementById('book-list').classList.add('d-none');
-  document.getElementById('book-list').classList.remove('d-block');
-  document.getElementById('add-book').classList.add('d-none');
-  document.getElementById('add-book').classList.remove('d-block');
+  document.getElementById('contact').classList.add('show-no-bootstrap');
+  document.getElementById('contact').classList.remove('hide-no-bootstrap');
+  document.getElementById('book-list').classList.add('hide-no-bootstrap');
+  document.getElementById('book-list').classList.remove('show-no-bootstrap');
+  document.getElementById('input-form').classList.add('hide-no-bootstrap');
+  document.getElementById('input-form').classList.remove('show-no-bootstrap');
 });

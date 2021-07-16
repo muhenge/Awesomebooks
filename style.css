@@ -2,3 +2,15 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.hide-no-bootstrap {
+  display: none;
+}
+
+.show-no-bootstrap {
+  display: block;
+}
+
+.flex-no-bootstrap {
+  display: flex;
+}
