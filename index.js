@@ -2,6 +2,10 @@
 const { DateTime } = luxon;
 /* eslint-enable */
 
+document.getElementById('input-form').classList.add('hide-no-bootstrap');
+document.getElementById('contact').classList.add('hide-no-bootstrap');
+document.getElementById('book-list').classList.add('show-no-bootstrap');
+
 const documentVariables = {
   booksCatalog: [],
   listOfBooks: document.getElementById('book-list'),
@@ -37,9 +41,11 @@ class BookCatalog {
     const strBooks = window.localStorage.getItem('books');
     if (strBooks !== null) {
       documentVariables.listOfBooks.innerHTML = '';
+
       const h1Header = document.createElement('h1');
       h1Header.textContent = 'Awesome Books';
       h1Header.classList.add('text-center');
+
       documentVariables.listOfBooks.appendChild(h1Header);
       documentVariables.booksCatalog = JSON.parse(strBooks);
       /* eslint-disable */
@@ -81,16 +87,16 @@ class BookCatalog {
   }
 
   static removeBook(event) {
-    const bookKey = event.currentTarget.parentElement;
-    const bookContainer = bookKey.parentElement;
-    const filteredArray = documentVariables.booksCatalog.filter(
-      (book) => book.title !== bookKey.children[0].innerText
-        || book.author !== bookKey.children[1].innerText,
-    );
+    const bookToDelete = event.currentTarget.parentElement;
+    const titleContainer = bookToDelete.children[0].children[0].innerText.toLowerCase();
+    const authorContainer = bookToDelete.children[0].children[1].innerText.toLowerCase();
 
-    documentVariables.booksCatalog = filteredArray;
+    const a = documentVariables.booksCatalog.filter((book) => book.title !== titleContainer
+      || book.author !== authorContainer);
 
-    bookContainer.removeChild(bookKey);
+    documentVariables.booksCatalog = a;
+
+    documentVariables.listOfBooks.removeChild(bookToDelete);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -109,10 +115,6 @@ timeP.classList.add('align-self-end');
 timeP.textContent = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
 
 document.getElementById('date-time').appendChild(timeP);
-
-document.getElementById('input-form').classList.add('hide-no-bootstrap');
-document.getElementById('contact').classList.add('hide-no-bootstrap');
-document.getElementById('book-list').classList.add('show-no-bootstrap');
 
 document.getElementById('add-nav').addEventListener('click', () => {
   document.getElementById('input-form').classList.add('show-no-bootstrap');
