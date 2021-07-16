@@ -59,7 +59,6 @@ class BookCatalog {
       }
 
     }
-    console.log("loadbooks()")
     /* eslint-enable */
   }
 
@@ -82,7 +81,6 @@ class BookCatalog {
       const svBooks = JSON.stringify(documentVariables.booksCatalog);
       window.localStorage.setItem('books', svBooks);
     }
-    console.log('saveBooks()');
   }
 }
 
