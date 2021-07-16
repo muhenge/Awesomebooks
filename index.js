@@ -80,18 +80,18 @@ class BookCatalog {
     if (documentVariables.booksCatalog !== undefined) {
       const svBooks = JSON.stringify(documentVariables.booksCatalog);
       window.localStorage.setItem('books', svBooks);
-    }
+    } 
   }
 }
 
 // eslint-disable-next-line no-unused-vars
 const b = new BookCatalog();
 
-document.getElementById('add-book').classList.add('d-none');
-document.getElementById('contact').classList.add('d-none');
-document.getElementById('book-list').classList.add('d-block');
+  document.getElementById('add-book').classList.add('d-none');
+  document.getElementById('contact').classList.add('d-none');
+  document.getElementById('book-list').classList.add('d-block');
 
-document.getElementById('add-nav').addEventListener('click', () => {
+  document.getElementById('add-nav').addEventListener('click', () => {
   document.getElementById('add-book').classList.add('d-block');
   document.getElementById('add-book').classList.remove('d-none');
   document.getElementById('contact').classList.add('d-none');
@@ -100,7 +100,7 @@ document.getElementById('add-nav').addEventListener('click', () => {
   document.getElementById('book-list').classList.remove('d-block');
 });
 
-document.getElementById('list').addEventListener('click', () => {
+  document.getElementById('list').addEventListener('click', () => {
   document.getElementById('book-list').classList.add('d-block');
   document.getElementById('book-list').classList.remove('d-none');
   document.getElementById('contact').classList.add('d-none');
@@ -109,7 +109,7 @@ document.getElementById('list').addEventListener('click', () => {
   document.getElementById('add-book').classList.remove('d-block');
 });
 
-document.getElementById('contact-nav').addEventListener('click', () => {
+  document.getElementById('contact-nav').addEventListener('click', () => {
   document.getElementById('contact').classList.add('d-block');
   document.getElementById('contact').classList.remove('d-none');
   document.getElementById('book-list').classList.add('d-none');
