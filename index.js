@@ -37,6 +37,10 @@ class BookCatalog {
     const strBooks = window.localStorage.getItem('books');
     if (strBooks !== null) {
       documentVariables.listOfBooks.innerHTML = '';
+      const h1Header = document.createElement('h1');
+      h1Header.textContent = 'Awesome Books';
+      h1Header.classList.add('text-center');
+      documentVariables.listOfBooks.appendChild(h1Header);
       documentVariables.booksCatalog = JSON.parse(strBooks);
       /* eslint-disable */
 
