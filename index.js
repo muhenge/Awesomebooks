@@ -19,18 +19,20 @@ class BookCatalog {
     documentVariables.addBookButton.addEventListener('click', this.addBook);
     window.addEventListener('load', BookCatalog.loadBooks);
     window.addEventListener('unload', BookCatalog.saveBooks);
+    document.getElementById('input-form').reset();
   }
 
   // eslint-disable-next-line class-methods-use-this
-  addBook() {
+  addBook(event) {
     if (documentVariables.inputTitle.value !== '' && documentVariables.inputAuthor.value !== '') {
       const newBook = {
         title: documentVariables.inputTitle.value,
         author: documentVariables.inputAuthor.value,
       };
       documentVariables.booksCatalog.push(newBook);
+      event.preventDefault();
+      document.getElementById('input-form').reset();
     }
-    document.getElementById('input-form').reset();
 
     BookCatalog.saveBooks();
     BookCatalog.loadBooks();
