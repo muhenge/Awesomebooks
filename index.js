@@ -99,6 +99,9 @@ class BookCatalog {
     documentVariables.booksCatalog = a;
 
     documentVariables.listOfBooks.removeChild(bookToDelete);
+
+    BookCatalog.saveBooks();
+    BookCatalog.loadBooks();
   }
 
   // eslint-disable-next-line class-methods-use-this
