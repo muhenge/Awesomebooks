@@ -18,7 +18,7 @@
 - open index.html with live server
 ## Live demo
 
-[Live preview](https://awesomebook.netlify.app/)
+[Live preview](https://awebooks.netlify.app/)
 
 ### Author
 
